@@ -84,6 +84,21 @@ vim.api.nvim_create_autocmd("BufEnter", {
         end,
         "Find note match",
       },
+      i = {
+        function()
+          require("zk").pick_notes(nil, nil, function(notes)
+            local vstartr, vstartc = unpack(vim.api.nvim_win_get_cursor(0))
+            local _, vendr, vendc, _ = unpack(vim.fn.getpos("v"))
+
+            local link = "[" .. notes[1].title .. "](" .. notes[1].path .. ")"
+            print(vstartr, vstartc, vendr, vendc, vstartc + #link)
+
+            vim.api.nvim_buf_set_text(0, vstartr - 1, vstartc - 2, vendr - 1, vendc, { link })
+            vim.api.nvim_win_set_cursor(0, { vendr, vstartc + #link - 3 })
+          end)
+        end,
+        "Insert note link",
+      },
     }, {
       mode = "v",
       bufnr = bufnr,
@@ -102,6 +117,17 @@ vim.api.nvim_create_autocmd("BufEnter", {
           require("zk.commands").get("ZkLinks")()
         end,
         "Show note links",
+      },
+      i = {
+        function()
+          require("zk").pick_notes(nil, nil, function(notes)
+            local cur = vim.api.nvim_win_get_cursor(0)
+            local link = "[" .. notes[1].title .. "](" .. notes[1].path .. ")"
+            vim.api.nvim_buf_set_text(0, cur[1] - 1, cur[2], cur[1] - 1, cur[2], { link })
+            vim.api.nvim_win_set_cursor(0, { cur[1], cur[2] + #link })
+          end)
+        end,
+        "Insert note link",
       },
     }, {
       mode = "n",
