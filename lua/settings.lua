@@ -40,8 +40,7 @@ vim.api.nvim_create_autocmd("TermOpen", {
 	group = "Terminal",
 	pattern = "*",
 	callback = function()
-		vim.wo.number = false
-		vim.wo.relativenumber = false
+		-- vim.bo.filetype = "terminal"
 		vim.api.nvim_buf_set_keymap(0, "t", "<esc>", [[<C-\><C-n>]], { noremap = true })
 		vim.cmd("startinsert")
 	end,
