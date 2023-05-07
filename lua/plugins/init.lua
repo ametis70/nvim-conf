@@ -49,23 +49,12 @@ return require("packer").startup(function()
 		config = [[ require('refactoring').setup({}) ]],
 	})
 
-	-- Tooling
-	use({
-		"WhoIsSethDaniel/mason-tool-installer.nvim",
-		{
-			"williamboman/mason.nvim",
-			config = [[ require('plugins.tooling') ]],
-		},
-	})
-
 	-- LSP
 	use({
 		"folke/lsp-colors.nvim", -- Color groups
-		{
-			-- Installer
-			"williamboman/mason-lspconfig.nvim",
-			require = "williamboman/mason.nvim",
-		},
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		"williamboman/mason.nvim",
+		"williamboman/mason-lspconfig.nvim",
 		"folke/neodev.nvim", -- Lua
 		"jose-elias-alvarez/typescript.nvim", -- Typsecript
 		"jose-elias-alvarez/null-ls.nvim", -- Tooling

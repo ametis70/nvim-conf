@@ -74,7 +74,7 @@ wk.register({
 	f = {
 		f = { "<cmd>Telescope find_files<cr>", "Find file" },
 		p = {
-			[[<cmd>lua require('telescope.builtin').find_files{ cwd = '~/.config/nvim/' }<CR>]],
+			[[<cmd>lua require('telescope.builtin').git_files{ cwd = '~/.config/nvim/' }<CR>]],
 			"Find config file",
 		},
 		o = { "<cmd>Telescope oldfiles<cr>", "Open recent file" },
