@@ -285,9 +285,13 @@ return require("packer").startup(function()
 	use({ "Eduruiz/vim-blade" })
 
 	-- DAP
-	use("mfussenegger/nvim-dap")
-	use("Pocco81/dap-buddy.nvim")
-	use("rcarriga/nvim-dap-ui")
+	use({
+		"mfussenegger/nvim-dap",
+		{
+			"rcarriga/nvim-dap-ui",
+			config = [[require('plugins.debugging')]],
+		},
+	})
 
 	-- Test runner
 	use({
