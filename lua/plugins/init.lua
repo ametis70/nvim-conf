@@ -88,6 +88,10 @@ return require("packer").startup(function()
 		"petertriho/cmp-git",
 		"hrsh7th/cmp-nvim-lsp-signature-help",
 		{
+			"zbirenbaum/copilot-cmp",
+			requires = { "zbirenbaum/copilot.lua" },
+		},
+		{
 			"hrsh7th/nvim-cmp",
 			config = [[require('plugins.nvim-cmp')]],
 		},

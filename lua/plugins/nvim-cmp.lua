@@ -33,10 +33,6 @@ cmp.setup({
 			end,
 		}),
 	},
-	experimental = {
-		ghost_text = true,
-		native_menu = false,
-	},
 	mapping = cmp.mapping.preset.insert({
 		["<C-b>"] = cmp.mapping.scroll_docs(-4),
 		["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -69,33 +65,25 @@ cmp.setup({
 			end
 		end, { "i", "s" }),
 	}),
-	sources = cmp.config.sources({
-		{
-			name = "nvim_lsp",
-		},
-		{
-			name = "luasnip",
-		},
-		{
-			name = "nvim_lsp_signature_help",
-		},
-		{
-			name = "nvim_lua",
-		},
-		{
-			name = "orgmode",
-		},
-	}, {
 
-		{ name = "git" },
+	sources = cmp.config.sources({
+		{ name = "copilot" },
+		{ name = "nvim_lsp" },
+		{ name = "luasnip" },
+		{ name = "nvim_lsp_signature_help" },
+		{ name = "nvim_lua" },
+		{ name = "orgmode" },
+		{ name = "path" },
+		{ name = "buffer" },
+	}),
+})
+
+-- Set configuration for specific filetype.
+cmp.setup.filetype("gitcommit", {
+	sources = cmp.config.sources({
+		{ name = "cmp_git" },
 	}, {
-		{
-			name = "path",
-		},
-	}, {
-		{
-			name = "buffer",
-		},
+		{ name = "buffer" },
 	}),
 })
 
@@ -124,3 +112,9 @@ cmp.setup.cmdline(":", {
 })
 
 require("cmp_git").setup()
+
+require("copilot").setup({
+	suggestion = { enabled = false },
+	panel = { enabled = false },
+})
+require("copilot_cmp").setup()
