@@ -314,4 +314,10 @@ return require("packer").startup(function()
 		"rest-nvim/rest.nvim",
 		config = [[require('plugins.rest')]],
 	})
+
+	-- Hex
+	use({
+		"RaafatTurki/hex.nvim",
+		config = [[require('plugins.hex')]],
+	})
 end)
