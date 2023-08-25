@@ -299,18 +299,20 @@ return require("packer").startup(function()
 
 	-- Test runner
 	use({
-		"haydenmeade/neotest-jest",
-		"nvim-neotest/neotest-go",
-		"nvim-neotest/neotest-python",
-		{
-			"nvim-neotest/neotest",
-			requires = {
-				"nvim-lua/plenary.nvim",
-				"nvim-treesitter/nvim-treesitter",
-				"antoinemadec/FixCursorHold.nvim",
-			},
-			config = [[require('plugins.testing')]],
+		"nvim-neotest/neotest",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
+			"antoinemadec/FixCursorHold.nvim",
+			-- {
+			--   "nvim-neotest/neotest-jest",
+			--   commit = "219033658bf8de6b91e201036a5cc5456905d9d2",
+			-- },
+			"nvim-neotest/neotest-jest",
+			"nvim-neotest/neotest-go",
+			"nvim-neotest/neotest-python",
 		},
+		config = [[require('plugins.testing')]],
 	})
 
 	-- REST
