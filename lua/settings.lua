@@ -1,33 +1,31 @@
-local utils = require("utils")
-
-local cmd = vim.cmd
 local indent = 2
 
-cmd("syntax enable")
-cmd("filetype plugin indent on")
-utils.opt("b", "expandtab", true)
-utils.opt("b", "shiftwidth", indent)
-utils.opt("b", "smartindent", false)
-utils.opt("b", "autoindent", true)
-utils.opt("b", "softtabstop", indent)
-utils.opt("b", "tabstop", indent)
-utils.opt("o", "hidden", true)
-utils.opt("w", "wrap", true)
-utils.opt("o", "ignorecase", true)
-utils.opt("o", "scrolloff", 10)
-utils.opt("o", "shiftround", true)
-utils.opt("o", "smartcase", true)
-utils.opt("o", "splitbelow", true)
-utils.opt("o", "splitright", true)
-utils.opt("w", "number", true)
-utils.opt("w", "relativenumber", true)
-utils.opt("w", "cursorline", true)
-utils.opt("o", "clipboard", "unnamed,unnamedplus")
-utils.opt("o", "lazyredraw", true)
-utils.opt("b", "undofile", true)
-utils.opt("o", "mouse", "a")
-utils.opt("o", "scrolloff", 10)
-utils.opt("o", "laststatus", 3)
+vim.cmd("syntax enable")
+vim.cmd("filetype plugin indent on")
+vim.o.expandtab = true
+vim.o.shiftwidth = indent
+vim.o.smartindent = false
+vim.o.autoindent = true
+vim.o.softtabstop = indent
+vim.o.tabstop = indent
+vim.o.hidden = true
+vim.o.wrap = true
+vim.o.ignorecase = true
+vim.o.scrolloff = 10
+vim.o.shiftround = true
+vim.o.smartcase = true
+vim.o.splitbelow = true
+vim.o.splitright = true
+vim.o.number = true
+vim.o.relativenumber = true
+vim.o.cursorline = true
+vim.o.clipboard = "unnamed,unnamedplus"
+vim.o.lazyredraw = true
+vim.o.undofile = true
+vim.o.mouse = "a"
+vim.o.scrolloff = 10
+vim.o.laststatus = 3
+vim.o.termguicolors = true
 
 vim.g.maplocalleader = ","
 
@@ -37,14 +35,14 @@ vim.cmd("au TextYankPost * lua vim.highlight.on_yank {on_visual = false}")
 -- Terminal
 vim.api.nvim_create_augroup("Terminal", { clear = true })
 vim.api.nvim_create_autocmd("TermOpen", {
-	group = "Terminal",
-	pattern = "*",
-	callback = function()
-		-- vim.bo.filetype = "terminal"
-		vim.api.nvim_buf_set_keymap(0, "t", "<esc>", [[<C-\><C-n>]], { noremap = true })
-		vim.cmd("startinsert")
-	end,
+  group = "Terminal",
+  pattern = "*",
+  callback = function()
+    -- vim.bo.filetype = "terminal"
+    vim.api.nvim_buf_set_keymap(0, "t", "<esc>", [[<C-\><C-n>]], { noremap = true })
+    vim.cmd("startinsert")
+  end,
 })
 
-require("keybindings")
-require("colorscheme")
+vim.g.tokyonight_style = "night"
+vim.cmd("colorscheme tokyonight")
